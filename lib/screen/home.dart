@@ -1,3 +1,4 @@
+import 'package:auth/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:auth/domain/workout.dart';
 
@@ -10,8 +11,16 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
           // backgroundColor: Theme.of(context).primaryColor,
           appBar: AppBar(
-            title: Text('Авторизация'),
-            leading: Icon(Icons.account_circle),
+            title: Text('Home page'),
+            leading: Icon(Icons.home_work),
+            actions: <Widget>[
+              FlatButton.icon(
+                  onPressed: () {
+                    AuthService().logOut();
+                  },
+                  icon: Icon(Icons.logout, color: Colors.white),
+                  label: SizedBox.shrink())
+            ],
           ),
           body: WorkoutLists()),
     );

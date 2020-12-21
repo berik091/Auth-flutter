@@ -16,9 +16,9 @@ class AuthService {
     }
   }
 
-  Future registerWithEmailAndPassword(String email, String password) async {
+  Future <User> registerWithEmailAndPassword(String email, String password) async {
     try {
-      AuthResult result = await _fAuth.signInWithEmailAndPassword(
+      AuthResult result = await _fAuth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
       return User.fromFirebase(user);
